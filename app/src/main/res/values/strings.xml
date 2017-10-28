@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Loan Calculator</string>
+    <string name="price">Vehicle price</string>
+    <string name="downpayment">Downpayment</string>
+    <string name="salary">Salary</string>
+    <string name="repayment">Repayment</string>
+    <string name="calculate">Calculate</string>
+    <string name="interest">Interest rate</string>
+    <string name="accept">Your loan application will be accepted!</string>
+    <string name="reject">Your loan application will be rejected!</string>
+</resources>
