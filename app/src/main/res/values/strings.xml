@@ -8,4 +8,5 @@
     <string name="interest">Interest rate</string>
     <string name="accept">Your loan application will be accepted!</string>
     <string name="reject">Your loan application will be rejected!</string>
+    <string name="close">CLOSE</string>
 </resources>

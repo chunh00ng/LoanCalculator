@@ -1,5 +1,6 @@
 package my.edu.tarc.loancalculator;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,9 +9,14 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+
 public class MainActivity extends AppCompatActivity {
 
-    private TextView result;
+    public static final String DOWNPAYMENT = "MainActivity.DOWNPAYMENT";
+    public static final String LOANPERIOD = "MainActivity.LOANPERIOD";
+    public static final String INTEREST = "MainActivity.INTEREST";
+    public static final String MONTHREPAYMENT = "MainActivity.MONTHREPAYMENT";
+    public static final String RESULT = "MainActivity.RESULT";
     private EditText price, downpayment, repayment, salary, interest;
 
     @Override
@@ -21,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void calculateLoan(View v) {
 
-        result = (TextView) findViewById(R.id.result);
         price = (EditText) findViewById(R.id.price);
         downpayment = (EditText) findViewById(R.id.downpayment);
         repayment = (EditText) findViewById(R.id.repayment);
@@ -38,12 +43,23 @@ public class MainActivity extends AppCompatActivity {
         double totalLoan = (Price - Downpayment) + totalInterest;
         double monthPayment = totalLoan / Repayment;
 
+        String result = "";
+
         if(monthPayment > (Salary * 0.3)) {
-            result.setText(getString(R.string.reject));
+            result = (getString(R.string.reject));
         } else {
-            result.setText(getString(R.string.accept));
+            result = (getString(R.string.accept));
         }
 
+
+        Intent intent = new Intent(this, ResultActivity.class);
+        intent.putExtra(DOWNPAYMENT, Downpayment);
+        intent.putExtra(LOANPERIOD, Repayment);
+        intent.putExtra(INTEREST, Interest);
+        intent.putExtra(MONTHREPAYMENT, monthPayment);
+        intent.putExtra(RESULT, result);
+
+        startActivity(intent);
 
     }
 }
